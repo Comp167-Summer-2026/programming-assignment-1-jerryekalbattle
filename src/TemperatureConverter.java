@@ -31,19 +31,20 @@ public class TemperatureConverter {
                 System.out.print("Enter the unit (C or F): ");
                 String unit = input.nextLine();
 
-                if (!unit.equalsIgnoreCase("C") && !unit.equalsIgnoreCase("F")) {
+                while (!unit.equalsIgnoreCase("C") && !unit.equalsIgnoreCase("F")) {
                     System.out.println("Error: Invalid unit. Please enter C or F.");
+                    System.out.print("Enter the unit (C or F): ");
+                    unit = input.nextLine();
+                }
+
+                double converted = convertTemperature(temperature, unit);
+
+                if (unit.equalsIgnoreCase("C")) {
+                    System.out.printf("%.2f C is equal to %.2f F%n",
+                            temperature, converted);
                 } else {
-
-                    double converted = convertTemperature(temperature, unit);
-
-                    if (unit.equalsIgnoreCase("C")) {
-                        System.out.printf("%.2f C is equal to %.2f F%n",
-                                temperature, converted);
-                    } else {
-                        System.out.printf("%.2f F is equal to %.2f C%n",
-                                temperature, converted);
-                    }
+                    System.out.printf("%.2f F is equal to %.2f C%n",
+                            temperature, converted);
                 }
             }
         }
